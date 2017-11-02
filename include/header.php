@@ -18,9 +18,9 @@
   <![endif] -->
 </head>
 
-<body class="bg">
-<div class="head1 white">
-<span class="sort">
+<body>
+<div class="head1 white" >
+<span class="sort" style="background-color:#232323">
 	<a href="#action" style="color: white">ACTION</a>
 	<a href="#adventure" style="color: white">ADVENTURE</a>
 	<a href="#strategy" style="color: white">STRATEGY</a>
