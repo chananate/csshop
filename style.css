@@ -6,9 +6,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232323', end
 background-size: 2000%;
 background-attachment: scroll;
 }
-.bgc{
-	background-color: #252d41;
-}
+
 .head1{
 	position: fixed;
 	width: 400%;
@@ -16,8 +14,7 @@ background-attachment: scroll;
 	padding: 50px 0;
 	left: -1px;
 }
-.logo{
-	background-color: #232323; 
+.logo{ 
 	padding-top: 15%;
 	width: 300%;
 	padding: 40px 0;
@@ -48,7 +45,7 @@ background-attachment: scroll;
 .div-img{
 	text-align: center;
 	width: 65%;
-	left: 300px;
+	padding-left: 100px;
 	top: 200px;
 }
 .sort{
@@ -63,6 +60,9 @@ background-attachment: scroll;
 	text-transform: uppercase;
 	left: 38px;
 	top: 40px;
+	color: white;
+}
+.white{
 	color: white;
 }
 a{
