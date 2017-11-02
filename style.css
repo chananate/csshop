@@ -10,7 +10,7 @@ background-attachment: scroll;
 .head1{
 	position: fixed;
 	width: 400%;
-	background-color: #232323; 
+	background-color: #232323 ; 
 	padding: 50px 0;
 	left: -1px;
 }
@@ -45,7 +45,7 @@ background-attachment: scroll;
 .div-img{
 	text-align: center;
 	width: 65%;
-	padding-left: 100px;
+	left: 250px;
 	top: 200px;
 }
 .sort{

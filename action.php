@@ -1,15 +1,15 @@
 <?php include "include/header.php"; ?>
 <?php
-    include('include/db.php');
+    //include('include/db.php');
 
-    $db = new DB();
+    //$db = new DB();
 
     $rows = $db->Query('SELECT product.*,lib_category.name AS category_name FROM product LEFT JOIN lib_category ON product.category=lib_category.code');
     
 ?>
 <br>
-<<br>
-<<br>
+<br>
+<br>
 <div class="row">
 
 	<?php
