@@ -3,7 +3,7 @@
 
     $db = new DB();
 
-    $rows = $db->Query('select * from product');
+    $rows = $db->Query('select * from product');    
     echo json_encode($rows);
     
 ?>
