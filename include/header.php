@@ -6,7 +6,8 @@
     $sm = new DB();
 
     $categorys = $db->Query('SELECT * FROM lib_category');
-    $list = $sm->Query('SELECT * FROM product')
+    $list = $sm->Query('SELECT * FROM product');
+    
     
 ?>
 <!DOCTYPE html>
@@ -16,8 +17,8 @@
  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>CSS</title>
-	<link rel="icon" type="images/png" href="images/logo-square.png">
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="icon" type="images/png" href="../images/logo-square.png">
+	<link rel="stylesheet" type="text/css" href="../style.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
@@ -31,7 +32,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light  fixed-top navbar-dark" style="background-color: #232323;">
 <a class="navbar-brand" href="./">
-    <img src="images/logo-square.png" width="30" height="30" class="d-inline-block align-top" alt="">
+    <img src="../images/logo-square.png" width="30" height="30" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -47,7 +48,7 @@
           $url=$category['url']? $category['url']:$category['name'];
           ?>
       <li class="nav-item">
-        <a class="nav-link" href="<?=$url?>.php"><?=$category['name']?>&nbsp;</a>
+        <a class="nav-link" href="../category/<?= strtolower($url)?>.php"><?=$category['name']?>&nbsp;</a>
       </li>
       <?php } ?>
       
