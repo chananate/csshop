@@ -1,7 +1,7 @@
 
 <?php include "include/header.php"; ?>
 
-<span class="text-lo"><        What's hot ?        ></span>
+<!--<span class="text-lo"><        What's hot ?        ></span>-->
 
 	<div class="div-img col-lg-8 text-center"><center>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -32,5 +32,6 @@
 </div>
 </center>
 </div>
+
 
 <?php include "include/footer.php"; ?>

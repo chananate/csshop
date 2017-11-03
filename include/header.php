@@ -3,8 +3,10 @@
     include('db.php');
 
     $db = new DB();
+    $sm = new DB();
 
     $categorys = $db->Query('SELECT * FROM lib_category');
+    $list = $sm->Query('SELECT * FROM product')
     
 ?>
 <!DOCTYPE html>
@@ -19,7 +21,6 @@
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
-
 	<!--[if lt IE 9] >
    <script scr="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
    <script scr="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> 
@@ -29,7 +30,7 @@
 <body class="bg">
 
 <nav class="navbar navbar-expand-lg navbar-light  fixed-top navbar-dark" style="background-color: #232323;">
-<a class="navbar-brand" href="#">
+<a class="navbar-brand" href="./">
     <img src="images/logo-square.png" width="30" height="30" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +40,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="./">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="./">HOME <span class="sr-only">(current)</span></a>
       </li>
       <?php
       foreach($categorys as $category){ 
