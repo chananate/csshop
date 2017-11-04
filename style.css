@@ -46,7 +46,7 @@ background-attachment: scroll;*/
 .div-img{
 	text-align: center;
 	width: 65%;
-	left: 200px;
+	left: 50px;
 	top: 100px;
 }
 .sort{
@@ -74,3 +74,15 @@ a{
 body{
 	font-weight: 400;
 }
+
+.po{
+	position: absolute;
+	border: 4px;
+	left:  120px;
+  }
+h{
+	margin-left:  120px;
+	padding-left: 970px;
+
+
+  }
