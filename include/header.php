@@ -16,7 +16,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>CSS</title>
 	<link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
-	<link rel="stylesheet" type="text/css" href="<?=$rootFolder?>style.css">
+	<link rel="stylesheet" type="text/css" href="../style.css">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
@@ -38,19 +38,41 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<?=$rootFolder?>">HOME <span class="sr-only">(current)</span></a>
+      <li class="nav-item ">
+        <a class="nav-link" href="<?=$rootFolder?>">HOME &nbsp;&nbsp;&nbsp; <span class="sr-only">(current)</span></a>
       </li>
-      <?php
-      foreach($categorys as $category){ 
-          $url=$category['url']? $category['url']:$category['name'];
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          GAMES  
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <?php
+      foreach($categorys as $category){$url=$category['url']? $category['url']:$category['name'];
           ?>
-      <li class="nav-item">
-        <a class="nav-link" href="<?=$rootFolder?>category/?cat=<?=$category['code']?>"><?=$category['name']?>&nbsp;</a>
+          <a class="dropdown-item " href="<?=$rootFolder?>category/?cat=<?=$category['code']?>"><?=$category['name']?>&nbsp;</a>
+           <?php } ?>
+        </div>
       </li>
-      <?php } ?>
       
-    </ul>
+     <!-- <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>-->
+      <li class="nav-item">
+        <a class="nav-link" href="#contact"> &nbsp;&nbsp;CONTACT &nbsp;&nbsp; </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">LINK &nbsp;&nbsp; </a>
+      </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+      <li class="nav nav-item" >
+        <a class="nav-link" href="#">SIGN UP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">SIGN IN</a>
+      </li>
+        </ul>
+
   </div>
 </nav>
 <br>

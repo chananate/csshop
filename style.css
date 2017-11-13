@@ -6,6 +6,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#232323', end
 background-size: 2000%;
 background-attachment: scroll;*/
 }
+.in{
+	text-decoration:none; color:white; font-size:20pt;
+	
+}
 
 .head1{
 	position: fixed;
@@ -45,7 +49,7 @@ background-attachment: scroll;*/
 }
 .div-img{
 	text-align: center;
-	width: 65%;
+	width: 100%;
 	left: 50px;
 	top: 100px;
 }
@@ -85,4 +89,14 @@ h{
 	padding-left: 970px;
 
 
+  }
+  .dropdown-menu {
+	  background-color: #252d41;
+	  color:#bac0cc;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+	  color: #252d41;
+	  background-color: #bac0cc;
   }

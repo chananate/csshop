@@ -31,20 +31,22 @@
 </head>
     <body>
     <section id="section01" class="teaser">
-    
       <ul>
-        <li><img src= "<?=$rootFolder?>images/logo-square.png" width="50"></li>
-       
-        <li class="a , E-font" style="padding:10px;"><?=$row["pname"]?></li>
+        <li>
+        <a href="<?=$rootFolder?>category/?cat=<?=$row['category']?>" style="float:right; position:adsolute; z-index:99; color:#abc0cc; ">
+        <span style="font-size:30pt; left:-530px; top:40px;">&#10094;</span></a></li>
+        <li><img src= "<?=$rootFolder?>images/logo-square.png" width="50" style="padding-left:100%;position:static;"></li>
+        <li class="a , E-font" style="padding-left:10%; position:fixed;"><?=$row["pname"]?></li>
       </ul>
+      <div>
           <h1 class = "E-font"><?=$row["pname"]?></h1><br>
 
-          <iframe style="margin-left:27%; top:140px; z-index: 4; position:absolute;" width="560" height="315" src="https://www.youtube.com/embed/<?=$row['pvideo']?>?&autoplay=1" frameborder="0" allowfullscreen ></iframe><br>
-           <a href="<?=$rootFolder?>" style="left:90%; width:30px;">&#9962 </a>
-           <a href="<?=$rootFolder?>category/?cat=<?=$row['category']?>" style="left:95%; width:30px;">&#9735 </a>
+          <iframe style="margin-left:27%; top:140px; z-index: 4; position:absolute;" width="560" height="315" src="https://www.youtube.com/embed/<?=$row['pvideo']?>?&autoplay=0" frameborder="0" allowfullscreen ></iframe><br>
+           <a href="<?=$rootFolder?>" style="left:90%; width:30px;">&#9962; </a>
           
            <a href="#section02"><span></span>DETAILS</a>
            <!--<p onclick="setSec2()"><span></span>DETAILS</p>-->
+          </div>
     </section>
     <section id="section02" class="teaser">
       <img src="<?=$rootFolder?>/images/<?=$row['pid']?>.jpg" alt="" width=300px; style="position:absolution; z-index:9; float:right; margin-right:55px; margin-top:80px;">
