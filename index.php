@@ -57,7 +57,7 @@
             <h4 class="card-header" style="background-color:#c6b45b;"><?=$list[1]['pname']?></h4>
             <div class="card-body">
               <p class="card-text" style="text-overflow: ellipsis;">
-                <?=$list[1]['pdetail'];?></p>
+                <?=substr($list[1]['pdetail'],0,500);?>...</p>
             </div>
             <div class="card-footer">
               <a href="game1.php?pid=<?=$list[1]['pid']?>" class="btn btn-outline-dark">Read More</a>
@@ -68,7 +68,8 @@
           <div class="card h-100">
             <h4 class="card-header"  style="background-color:#6c5bc6;"><?=$list[2]['pname']?></h4>
             <div class="card-body">
-              <p class="card-text" style="text-overflow: ellipsis;"><?=$list[2]['pdetail'];?></p>
+              <p class="card-text" style="text-overflow: ellipsis;">
+              <?=substr($list[2]['pdetail'],0,520);?>...</p>
             </div>
             <div class="card-footer">
               <a href="game1.php?pid=<?=$list[2]['pid']?>" class="btn btn-outline-dark">Read More</a>
@@ -80,7 +81,7 @@
             <h4 class="card-header"  style=" background-color:#316d38; color:white;"><?=$list[16]['pname']?></h4>
             <div class="card-body">
               <p class="card-text" style="text-overflow: ellipsis;">
-              <?=$list[16]['pdetail'];?>
+              <?=substr($list[16]['pdetail'],0,520);?>...
               </div>
             <div class="card-footer">
               <a href="game1.php?pid=<?=$list[16]['pid']?>" class="btn btn-outline-dark">Read More</a>

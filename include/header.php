@@ -7,6 +7,7 @@
   $db = new DB();
   $categorys = $db->Query('SELECT * FROM lib_category');
   $list = $db->Query('SELECT * FROM product');
+  $mas = $db->Query('SELECT * FROM mas');
 ?>
 <!DOCTYPE html>
 <html>
@@ -17,7 +18,7 @@
 	<title>CSS</title>
 	<link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
 	<link rel="stylesheet" type="text/css" href="../style.css">
-
+  <link rel="stylesheet" type="text/css" href="../master/style-m.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
 	<!--[if lt IE 9] >
@@ -58,18 +59,19 @@
         <a class="nav-link" href="#">Link</a>
       </li>-->
       <li class="nav-item">
-        <a class="nav-link" href="#contact"> &nbsp;&nbsp;CONTACT &nbsp;&nbsp; </a>
+        <a class="nav-link" href="<?=$rootFolder?>master/master.php"> &nbsp;&nbsp;CONTACT &nbsp;&nbsp; </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">LINK &nbsp;&nbsp; </a>
-      </li>
+      <a class="nav-link" href="#">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
+    </li>
       </ul>
+      
       <ul class="nav navbar-nav navbar-right">
       <li class="nav nav-item" >
-        <a class="nav-link" href="#">SIGN UP</a>
+        <a class="nav-link" href="../signup/signup.php">SIGN UP</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">SIGN IN</a>
+        <a class="nav-link" href="../signin/signin.php">SIGN IN</a>
       </li>
         </ul>
 
@@ -78,3 +80,4 @@
 <br>
 <br>
 <br>
+<!-- เชี้ยเอ้ย -->
