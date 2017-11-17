@@ -3,7 +3,6 @@
     margin: 0;
     padding: 0;
     border: 0;
-    background-image: url('/connect/b3.jpg'); /*เพิ่มภาพพื้นหลัง*/
     z-index: -1px; /*เพิ่มภาพพื้นหลัง*/
   }
   html, body {
@@ -57,9 +56,7 @@
     z-index: -99;
     background-size:cover;
   }
-  #section03{
-    background-color:#666666;
-  }
+
 
   
 section img{

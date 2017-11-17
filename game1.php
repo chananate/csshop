@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
-  $rootFolder = "//csshop/";  // ระบุ path ที่วาง program เช่น / , /csshop/ , /myproject/
+session_start();
+  $rootFolder = "/csshop/";  // ระบุ path ที่วาง program เช่น / , /csshop/ , /myproject/
 
   include('include/db.php');
 
@@ -24,14 +25,14 @@
 
   <link href="https://fonts.googleapis.com/css?family=Prompt" rel="stylesheet">
  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Fjalla+One|Josefin+Sans|News+Cycle|Oswald|Prompt|Roboto" rel="stylesheet">
- <link rel="stylesheet" type="text/css" href="<?=$rootFolder?>style-detail.css">
+ <link rel="stylesheet" type="text/css" href="style-detail.css">
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
 
 </head>
     <body>
-   
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#232323; ">
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color:#232323; position:fixed">
     <a class="navbar-brand" href="<?=$rootFolder?>category/?cat=<?=$row['category']?>">&#10094;</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -46,46 +47,62 @@
         <li class="nav" style="color:white; margin-top:7px; padding-right:10px;"><?=$row["pname"]?>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
+          <a class="nav-link" href="cart.php">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
         </li>
         </ul>
     <ul class="nav navbar-nav navbar-right"  >
-      <li class="nav nav-item" >
-        <a class="nav-link" href="signup/signup.php">SIGN UP</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="signin/signin.php">SIGN IN</a>
-      </li>
+    <?php
+    if(isset($_SESSION['name']) && $_SESSION['name']!=""){ 
+      ?>
+    <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <?=$_SESSION['username']?>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class="dropdown-item " href="<?=$rootFolder?>profile/profile.php">PROFILE</a>
+    <a class="dropdown-item " href="<?=$rootFolder?>signin/logout.php">SIGN OUT</a>
+    </div>
+  </li>
+    <?php }else{ ?>
+    <li class="nav nav-item" >
+      <a class="nav-link" href="<?=$rootFolder?>signup/signup.php">SIGN UP</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<?=$rootFolder?>signin/signin.php">SIGN IN</a>
+    </li>
+    <?php } ?>
         </ul>
     
     </div>
   </nav>
-  
-   <section id="section01" class="teaser">
-    
 
-    <a href="#section02"><span></span>DETAILS</a>
+  <br><br>
+   <section id="section01" class="teaser" style="position:relative;">
+     
+   <h1 class = "E-font"><?=$row["pname"]?></h1><br>
+
+          <iframe style="margin-left:27%; top:140px; z-index: 4; position:absolute;" width="560" height="315" src="https://www.youtube.com/embed/<?=$row['pvideo']?>?&autoplay=0" frameborder="0" allowfullscreen ></iframe><br>
+
+
+            <a href="#section02">&#9660;DETAILS</a>
     </section>
 
     <section id="section02" class="teaser">
-      
-      <img src="<?=$rootFolder?>/images/<?=$row['pid']?>.jpg" alt="" width=300px; style="position:absolution; z-index:9; float:right; margin-right:55px; margin-top:80px;">
-         
-      <h3 class = "T-font">รายละเอียด</h3>
-      
-          <p  class = "T-font" style=" font-size:17px; letter-spacing:1px; ">
-          ชื่อสินค้า : <?=$row ["pname"]?><br>
-          ราคา : <?=$row ["price"]?> บาท<br>
-          รายละเอียดสินค้า <br>
-          <?=$row ["pdetail"]?><br>
-          ปีที่ผลิต : <?=$row ["psince"]?><br>
-          ค่ายที่ผลิต : <?=$row ["pdevoloper"]?><br>
-          </p>
-          </div>    
-          
-          <a href="#section01"><span></span>BACK</a>
-
-    </section>
+    <img src="<?=$rootFolder?>/images/<?=$row['pid']?>.jpg" alt="" width=300px; style="position:absolution; z-index:9; float:right; margin-right:55px; margin-top:80px;">
+        <h3 class = "T-font">รายละเอียด</h3><br><br><br><br><br><<br>
+        <form>
+        <p class = "T-font" style="font-size:17px; letter-spacing:1px;">ชื่อสินค้า : <?=$row ["pname"]?><br>
+        ราคา : <?=$row ["price"]?> บาท<br>
+        รายละเอียดสินค้า <br>
+        <?=$row ["pdetail"]?><br>
+        ปีที่ผลิต : <?=$row ["psince"]?><br>
+        ค่ายที่ผลิต : <?=$row ["pdevoloper"]?><br></p>
+        <a href="#section01">&#9650;BACK</a>
+        <a href="<?=$rootFolder?>cart/cart.php?action=add&pid=<?=$row['pid']?>&pname=<?=$row['pname']?>&price=<?=$row['price']?>">
+        <button type="button"  class="btn btn-danger btn-lg" style="position:absolute; z-index:9; top:40%; left:500px;">
+          BUY!</button></a><br>
+          </from>
+  </section>
     
 
 

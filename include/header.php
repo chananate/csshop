@@ -1,6 +1,7 @@
 
 <?php
-  $rootFolder = "//csshop/";  // ระบุ path ที่วาง program เช่น / , /csshop/ , /myproject/
+  session_start();
+  $rootFolder = "/csshop/";  // ระบุ path ที่วาง program เช่น / , /csshop/ , /myproject/
 
   include('db.php');
 
@@ -17,8 +18,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>CSS</title>
 	<link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
-	<link rel="stylesheet" type="text/css" href="../style.css">
-  <link rel="stylesheet" type="text/css" href="../master/style-m.css">
+	<link rel="stylesheet" type="text/css" href="<?=$rootFolder?>style.css">
+  <link rel="stylesheet" type="text/css" href="<?=$rootFolder?>master/style-m.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 
 	<!--[if lt IE 9] >
@@ -62,17 +63,52 @@
         <a class="nav-link" href="<?=$rootFolder?>master/master.php"> &nbsp;&nbsp;CONTACT &nbsp;&nbsp; </a>
       </li>
       <li class="nav-item">
-      <a class="nav-link" href="#">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
+      <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
     </li>
-      </ul>
       
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        SEARCH &#x1F50D;</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <form class="form-inline dropdown-item">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>
+      </li>
+</ul>
+
       <ul class="nav navbar-nav navbar-right">
+        
+      <?php
+      if(isset($_SESSION['name']) && $_SESSION['name']!=""){ 
+        ?>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?=$_SESSION['username']?>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item " href="<?=$rootFolder?>profile/profile.php">PROFILE</a>
+        <a class="dropdown-item " href="<?=$rootFolder?>signin/logout.php">SIGN OUT</a>
+        </div>
+      </li>
+
+      <!--<li class="nav-item" style="color:white; font-size:14pt;">
+      <a class="nav-link" href="profile.php">
+      <.?=$_SESSION['username']?></a></li>
+      <li class="nav-item">
+      <a class="nav-link" style="font-size:10pt;" href="<.?=$rootFolder?>signin/logout.php">(SIGN OUT)</a>
+      </li>-->
+
+      <?php }else{ ?>
       <li class="nav nav-item" >
-        <a class="nav-link" href="../signup/signup.php">SIGN UP</a>
+        <a class="nav-link" href="<?=$rootFolder?>signup/signup.php">SIGN UP</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="../signin/signin.php">SIGN IN</a>
+        <a class="nav-link" href="<?=$rootFolder?>signin/signin.php">SIGN IN</a>
       </li>
+      <?php } ?>
         </ul>
 
   </div>

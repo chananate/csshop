@@ -16,9 +16,13 @@ class DB {
         'dbName'=>'kkclinic_csshop',
         'charSet'=>'utf8'
     ];*/
+    
 	private $conn;
 	
-	
+	public function __construct(){
+       
+    }
+    
 	private function connect(){
         $this->conn = new PDO("mysql:host=".$this->serverInfo["host"].";dbname=".
         $this->serverInfo["dbName"].";charset=".

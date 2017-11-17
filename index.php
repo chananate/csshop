@@ -1,5 +1,7 @@
 
-<?php include "include/header.php"; ?>
+<?php 
+
+include "include/header.php"; ?>
 
 <div class="jumbotron jumbotron-fluid" style="background-image: url(images/bg-in.jpg); background-size:cover; z-index:-1; color:#c0c5db; position:relative; height:550px;">
 <div class="container">
@@ -7,10 +9,9 @@
   <p class="lead" style="letter-spacing:10px;"><i><b>computer science shop.</b></i></p></cemter>
 </div>
 </div>
-
 <div class="jumbotron" style="background-color:#444954; position:relative; top:-30px; width:100%; height:700px;">
 
-    <h1 class="my-4" style="color:white;font-family:'Gill Sans MT';letter-spacing:5px;"> | Welcome to CSS</h1>
+    <h1 class="my-4" style="color:white;letter-spacing:5px; font-weight:bold"> | Welcome to CSS</h1>
   <br>
   <center>
 <div class="div-img col-lg-8 text-center" style="display: block;height: auto;max-width: 100%;line-height: 1;top:-5%;left:-1%;width: 100%;height:100%;"><center>
@@ -60,7 +61,7 @@
                 <?=substr($list[1]['pdetail'],0,500);?>...</p>
             </div>
             <div class="card-footer">
-              <a href="game1.php?pid=<?=$list[1]['pid']?>" class="btn btn-outline-dark">Read More</a>
+              <a href="game1.php?pid=<?=$list[1]['pid']?>" class="btn btn-outline-warning">Read More</a>
             </div>
           </div>
         </div>
@@ -72,7 +73,7 @@
               <?=substr($list[2]['pdetail'],0,520);?>...</p>
             </div>
             <div class="card-footer">
-              <a href="game1.php?pid=<?=$list[2]['pid']?>" class="btn btn-outline-dark">Read More</a>
+              <a href="game1.php?pid=<?=$list[2]['pid']?>" class="btn btn-outline-primary">Read More</a>
             </div>
           </div>
         </div>
@@ -84,7 +85,7 @@
               <?=substr($list[16]['pdetail'],0,520);?>...
               </div>
             <div class="card-footer">
-              <a href="game1.php?pid=<?=$list[16]['pid']?>" class="btn btn-outline-dark">Read More</a>
+              <a href="game1.php?pid=<?=$list[16]['pid']?>" class="btn btn-outline-success">Read More</a>
             </div>
           </div>
         </div>
@@ -94,7 +95,7 @@
 
       <!-- Portfolio Section -->
       <div class="jumbotron" style="background-color:#562828; position:relative; top:150px;left:-3%; width:105.3%; height:120%;">
-      <center><span style="font-size:50px;color:white;font-family:'Georgia'">"</span><span style="color:white;font-size:50px;font-weight:bold">BEST SELL</span></center>
+      <center><span style="color:white;font-size:50px;font-weight:bold">BEST SELL <sup style="font-size:20pt;">1</sup></span></center>
 <br><br><br>
       <div class="row">
         <div class="col-lg-4 col-sm-6 portfolio-item">

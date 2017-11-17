@@ -1,5 +1,5 @@
 <?php
- $rootFolder = "//csshop/";
+ $rootFolder = "/csshop/";
  ?>
 <html>
 <head>
@@ -45,7 +45,7 @@ sign up
 	
 	#h{
 		margin-top:3%;
-		padding-left: 5%;
+		padding-left: 10%;
 		font-size: 70px;
 		color:white;
 	}
@@ -67,8 +67,49 @@ sign up
 		text-align:center;
 		margin-left:30%;
 	}
+	#username { 
+  padding: 0 20px 0 2px; 
+}
+.thinking { 
+	background: white url("img/checking.gif") no-repeat; 
+	background-position: 150px 1px;   
+}
+
+.approved { 
+	background: white url("img/true.gif") no-repeat; 
+	background-position: 150px 1px;   
+}
+
+.denied { 
+	background: #FF8282 url("img/false.gif") no-repeat; 
+	background-position: 150px 1px;   
+}
+
 	
 	</style>
+	<script>
+var xmlHttp;
+function checkUsername() {
+document.getElementById("username").className = "thinking";
+xmlHttp = new XMLHttpRequest();
+xmlHttp.onreadystatechange = showUsernameStatus;
+var username = document.getElementById("username").value;
+var url = "checkName.php?username=" + username;
+xmlHttp.open("GET", url);
+xmlHttp.send();
+}
+function showUsernameStatus() {
+if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+if (xmlHttp.responseText == "okay") {
+document.getElementById("username").className = "approved";
+} else {
+document.getElementById("username").className = "denied";
+document.getElementById("username").focus();
+document.getElementById("username").select();
+ }
+ }
+}
+</script>
 </head>
 <body>
 	<!--<section id="head">-->
@@ -81,11 +122,11 @@ sign up
 	</section>
 	<!--</section>-->
 	<div class="ct">
-	<form action="insert-customer.php" method="post" style="margin-top:10%;">
+	<form action="fsignup.php" method="post" style="margin-top:10%;">
 		<span id="txfm">Name</span><br>
 		<input type="text" name="name" id="name" placeholder="Name" class="form-control mb-2 mb-sm-0"><br><br>
 		<span id="txfm">Username</span><br>
-		<input type="text" name="username" id="username" placeholder="Username" class="form-control mb-2 mb-sm-0"><br><br>
+		<input type="text"  onblur="checkUsername()" name="username" id="username" placeholder="Username" class="form-control mb-2 mb-sm-0"><br><br>
 		<span id="txfm">E-mail</span><br>
 		<input type="email" name="email" id="email" placeholder="E-mail" class="form-control mb-2 mb-sm-0"><br><br>
 		<span id="txfm">Password</span><br>
@@ -93,7 +134,7 @@ sign up
 		<span id="txfm">Confirm Password</span><br>
 		<input type="password" name="conpassword" id="conpassword" placeholder="Confirm Password" class="form-control mb-2 mb-sm-0"><br><br>
 		<span id="txfm">Address</span><br>
-		<textarea class="textareaB" name="address" rows="3" cols="40" id="address" placeholder="Address"></textarea><br><br>
+		<textarea class="textareaB" name="address" rows="3" cols="58" id="address" placeholder="Address"></textarea><br><br>
 		<span id="txfm">Province</span><br>
 		<input type="text" name="province" id="province" placeholder="Province" class="form-control mb-2 mb-sm-0"><br><br>
 		<span id="txfm">Postal code</span><br>
