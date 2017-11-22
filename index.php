@@ -1,6 +1,5 @@
 
 <?php 
-
 include "include/header.php"; ?>
 
 <div class="jumbotron jumbotron-fluid" style="background-image: url(images/bg-in.jpg); background-size:cover; z-index:-1; color:#c0c5db; position:relative; height:550px;">
