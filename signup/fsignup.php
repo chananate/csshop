@@ -1,4 +1,5 @@
 <?php
+
 include "insert-customer.php"; 
 $rootFolder = "/csshop/";
 ?>
@@ -7,7 +8,7 @@ $rootFolder = "/csshop/";
 <title>
     finish
 </title>
-<link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
+<link rel="icon" type="images/png" href="../images/logo-square.png">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
 <style>
     body{

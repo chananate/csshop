@@ -1,7 +1,7 @@
 <?php 
     include "../include/header.php";
     if(!isset($_SESSION["username"]) ||$_SESSION["username"] ==""){
-        echo ('<script> alert("Not found any profile, Please login first."); window.location="signin/signin.php";</script>');
+        echo ('<script> alert("Not found any profile, Please login first."); window.location="../signin/signin.php";</script>');
         return ;
     }
     $pro=$db->Query('SELECT * FROM customer WHERE username="'.$_SESSION["username"].'" ');
@@ -30,9 +30,10 @@
 <b>Province : </b>
 <input type="text" name="province" id="province" placeholder="<?=$pro['province'];?>"><br><br>
 <b>Postal Code : </b>
-<input type="text" name="postalCode" id="postalCode" placeholder="<?=$pro['postalCode'];?>"><br><br><br>   
+<input type="text" name="postalCode" id="postalCode" placeholder="<?=$pro['postalCode'];?>"><br><br>
+<br>   
 <button type="submit" class="btn btn-outline-dark btn-lg">Submit</button>
-<a href="profile.php" style="z-index:3;"><button type="button" class="btn btn-outline-dark btn-lg">Cancel</button></a>
+<a href="<?=$rootFolder?>profile/profile.php" style="z-index:3;"><button type="button" class="btn btn-outline-dark btn-lg">Cancel</button></a>
 </form>
     </p>
   </div>

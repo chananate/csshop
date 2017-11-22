@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start();
+if(!isset($_SESSION["username"]) ||$_SESSION["username"] ==""){
+    echo ('<script> alert("Not found any profile, Please login first."); window.location="../signin/signin.php";</script>');
+    return ;
+}
+?>
 <html>
 <head>
 	<title>Pay</title>
@@ -99,44 +106,37 @@
 </head>
 <body>
 	<h1>Payment</h1>
-	<img class="pic" src="pay2.jpg">
+	<img class="pic" src="pay4.jpg">
 	<div  id="s">
 	<p style="font-size: 70px;">Choose your bank</p>
 	<pre style="font-size: 15px;">
-<img class="img"  src="/t1.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Thanachart Bank		<img class="img"  src="/t2.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Krung Thai bank		<img class="img"  src="/t3.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Bangkok Bank<br>
-<img class="img"  src="/t4.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Thai Commercial Bank	<img class="img"  src="/t5.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Bank of Ayudhya		<img class="img"  src="/t6.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Savings Bank
+<img class="img"  src="t1.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Thanachart Bank		<img class="img"  src="t2.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Krung Thai bank		<img class="img"  src="t3.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Bangkok Bank<br>
+<img class="img"  src="t4.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Thai Commercial Bank	<img class="img"  src="t5.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Bank of Ayudhya		<img class="img"  src="t6.png"height="100px"onclick="document.getElementById('id01').style.display='block'" style="width:auto;cursor: pointer;">Savings Bank
 	</pre><br><br><br><br>
 	</div>
 
 <div id="id01" class="modal"> <!--สร้างหน้าที่มันเด้งขึ้นมาให้กรอก หลังจากที่คลิกเลือกธนาคาร-->
+<?php
+$total = $_GET["total"];
+?>
+<form action="ncode.php" class="modal-content">
+<div class="container">
+  <b style="font-size: 20px;">Promptpay</b><br><br>
+  <b>From account number</b><br>
+  <input type="text" placeholder="ใส่เลขที่บัญชี" name="account" required>
+  <b>To promptpay number xxx-xxxx-xxx</b><br>
+  <input type="text" placeholder="xxx-xxxx-xxx" pattern="xxx-xxxx-xxx" name="amount" required >
+  <b>Name</b><br>
+  <input type="text" placeholder="ใส่ชื่อของคุณ" name="name" required>
+  <b>Amount = <?=$total?> ฿</b><br>
+  <input type="text" placeholder="ใส่จำนวนเงิน" name="amount" pattern="<?=$total?>" required>
   
-  <form class="modal-content">
-    <div class="container">
-      <b>Account number</b><br>
-      <input type="text" placeholder="ใส่เลขที่บัญชี" name="account" required>
-
-      <b>Branch office</b><br>
-      <input type="text" placeholder="สาขาธนาคาร" name="branch" required>
-        
-      <button type="submit">Pay</button>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1"><!--ทำแถบล่างสุดตรง cancle ให้เป็นสีเทา-->
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
-  </form>
+  <button type="submit">Pay</button>
 </div>
-<!--
-<script>
-// รับค่าจาก model
-var modal = document.getElementById('id01');
-
-// ถ้าผู้ใช้คลิกที่นอกกล่อง กล่องจะปิดทันที
-function(event) {
-    if (event == modal) {
-        modal;
-    }
-}
-</script> -->
+<div class="container" style="background-color:#f1f1f1"><!--ทำแถบล่างสุดตรง cancle ให้เป็นสีเทา-->
+  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+</div>
+</form><br><br>
+</div>
 </body>
 </html>

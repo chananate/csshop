@@ -91,9 +91,9 @@ sign up
 var xmlHttp;
 function checkUsername() {
 document.getElementById("username").className = "thinking";
-xmlHttp = new XMLHttpRequest();
-xmlHttp.onreadystatechange = showUsernameStatus;
-var username = document.getElementById("username").value;
+xmlHttp = new XMLHttpRequest();// โหลดแบบไม่ต้องรีเฟรช
+xmlHttp.onreadystatechange = showUsernameStatus; //ตรวจสอบสถานะ
+var username = document.getElementById("username").value; 
 var url = "checkName.php?username=" + username;
 xmlHttp.open("GET", url);
 xmlHttp.send();

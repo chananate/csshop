@@ -13,7 +13,7 @@ $mas = $db->Query('SELECT * FROM mas');
         <title>
             signin
         </title>
-        <link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
+        <link rel="icon" type="images/png" href="../images/logo-square.png">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <style>
       body{
@@ -55,8 +55,15 @@ $mas = $db->Query('SELECT * FROM mas');
         <li class="nav-item">
           <a class="nav-link" href="<?=$rootFolder?>master/master.php"> &nbsp;&nbsp;CONTACT &nbsp;&nbsp; </a>
         </li>
+        <?php
+        if(isset($_SESSION['name']) && $_SESSION['name']!=""){ 
+          ?>
         <li class="nav-item">
-      <a class="nav-link" href="#">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
+        <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "<?=$rootFolder?>cart/cart.png"  width="20" ></a>
+      </li>
+        <?php } ?>
+    <li class="nav-item">
+      <a class="nav-link" href="<?=$rootFolder?>how-to.php">HOW TO </a>
     </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">

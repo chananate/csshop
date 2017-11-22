@@ -1,37 +1,53 @@
-
 <?php
-  session_start();
-  $rootFolder = "/csshop/";  // ระบุ path ที่วาง program เช่น / , /csshop/ , /myproject/
+session_start();
+$rootFolder = "/csshop/";
+include '../include/db.php';
+$db = new DB();
 
-  include('db.php');
-
-  $db = new DB();
-  
-  $categorys = $db->Query('SELECT * FROM lib_category');
-  $list = $db->Query('SELECT * FROM product');
-  $mas = $db->Query('SELECT * FROM mas');
+$categorys = $db->Query('SELECT * FROM lib_category');
+if(!isset($_SESSION["username"]) ||$_SESSION["username"] ==""){
+  echo ('<script> alert("Not found any profile, Please login first."); window.location="../signin/signin.php";</script>');
+  return ;
+}
 ?>
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>CSS</title>
-	<link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
-	<link rel="stylesheet" type="text/css" href="<?=$rootFolder?>style.css">
-  <link rel="stylesheet" type="text/css" href="<?=$rootFolder?>master/style-m.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-
-	<!--[if lt IE 9] >
-   <script scr="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-   <script scr="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> 
-  <![endif] -->
+<head><meta charset="UTF-8">
+<title>
+    finish
+</title>
+<link rel="icon" type="images/png" href="../images/logo-square.png">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<style>
+    body{
+        background-image: linear-gradient(#232323, #565555);
+    }
+    .mg{
+        margin-top:3%;
+        position:static;
+    }
+    .mt{
+        color:white;
+        text-align:center;
+        margin-top:7%;
+        font-size:30pt;
+    }
+    .gt{
+        color:#232323;
+        text-align:center;
+    }
+    a{
+        text-decoration:none;
+        color:#c4c4c4;
+    }
+</style>
 </head>
-
-<body class="bg">
-
+<body>
+<!--<div class="jumbotron jumbotron-fluid" style="background-color:#232323; z-index:-1; color:#c0c5db; position:relative; height:10%;">
+<div class="container">
+  <center><h1 class="display-3" style="letter-spacing:10px; font-family:'AngsanaUPC';"><b>CSS</b></h1>
+  <p class="lead" style="letter-spacing:10px;"><i><b>computer science shop.</b></i></p></cemter>
+</div>
+</div>-->
 <nav class="navbar navbar-expand-lg navbar-light  fixed-top navbar-dark" style="background-color: #232323;">
 <a class="navbar-brand" href="<?=$rootFolder?>">
     <img src="<?=$rootFolder?>/images/logo-square.png" width="50" height="50" class="d-inline-block align-top" alt="">
@@ -68,17 +84,17 @@
       if(isset($_SESSION['name']) && $_SESSION['name']!=""){ 
         ?>
       <li class="nav-item">
-      <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "<?=$rootFolder?>cart/cart.png"  width="20" ></a>
+      <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "../cart/cart.png"  width="20" ></a>
     </li>
-      <?php } ?>
-      <li class="nav-item">
+    <li class="nav-item">
       <a class="nav-link" href="<?=$rootFolder?>how.php">HOW TO </a>
     </li>
+      <?php } ?>
       <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         SEARCH &#x1F50D;</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <form class="form-inline dropdown-item" action='<?=$rootFolder?>search.php'>
+    <form class="form-inline dropdown-item" >
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
       <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
     </form>
@@ -122,7 +138,22 @@
 
   </div>
 </nav>
+
+<h1 class="mt">
+    Finish!
+</h1>
+<center><img src="right.png" width="200" alt="" class="mg"></center>
+<br><br>
+<h2 class="gt">
+    GO TO&nbsp;" <a style="color:white" href="<?=$rootFolder?>index.php">HOME</a> "
+</h2>
 <br>
-<br>
-<br>
-<!-- เชี้ยเอ้ย -->
+<center><h3 style="color :yellow">The delivery would be within the next few days.</h3></center><br>
+<br><br>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>

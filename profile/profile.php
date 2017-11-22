@@ -1,7 +1,7 @@
 <?php 
     include "../include/header.php";
     if(!isset($_SESSION["username"]) ||$_SESSION["username"] ==""){
-        echo ('<script> alert("Not found any profile, Please login first."); window.location="signin/signin.php";</script>');
+        echo ('<script> alert("Not found any profile, Please login first."); window.location="../signin/signin.php";</script>');
         return ;
     }
     $pro=$db->Query('SELECT * FROM customer WHERE username="'.$_SESSION["username"].'" ');

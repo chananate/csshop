@@ -46,9 +46,24 @@ session_start();
         </li>
         <li class="nav" style="color:white; margin-top:7px; padding-right:10px;"><?=$row["pname"]?>
         </li>
+        <?php
+      if(isset($_SESSION['name']) && $_SESSION['name']!=""){ 
+        ?>
         <li class="nav-item">
-          <a class="nav-link" href="cart.php">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
+          <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "<?=$rootFolder?>images/cart.png"  width="20" ></a>
         </li>
+      <?php } ?>
+      <li class="nav-item dropdown ">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        SEARCH &#x1F50D;</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <form class="form-inline dropdown-item" method='get' action='<?=$rootFolder?>search.php'>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    
+    </div>
+      </li>
         </ul>
     <ul class="nav navbar-nav navbar-right"  >
     <?php
@@ -92,13 +107,18 @@ session_start();
         <h3 class = "T-font">รายละเอียด</h3><br><br><br><br><br><<br>
         <form>
         <p class = "T-font" style="font-size:17px; letter-spacing:1px;">ชื่อสินค้า : <?=$row ["pname"]?><br>
-        ราคา : <?=$row ["price"]?> บาท<br>
+        <?php if($row['pid']==2 || $row['pid']==3 || $row['pid']==17){
+			?>
+        ราคา : <strike style="color:gray"><?=$row ["price"]?></strike>&nbsp;<span style="color:red"><?=$row['price']*0.9?></span> บาท
+        <?php }else { ?>
+        ราคา : <?=$row ["price"]?> บาท <?php } ?>
+        <br>
         รายละเอียดสินค้า <br>
         <?=$row ["pdetail"]?><br>
         ปีที่ผลิต : <?=$row ["psince"]?><br>
         ค่ายที่ผลิต : <?=$row ["pdevoloper"]?><br></p>
         <a href="#section01">&#9650;BACK</a>
-        <a href="<?=$rootFolder?>cart/cart.php?action=add&pid=<?=$row['pid']?>&pname=<?=$row['pname']?>&price=<?=$row['price']?>">
+        <a href="<?=$rootFolder?>cart/cart.php?pid=<?=$row['pid']?>">
         <button type="button"  class="btn btn-danger btn-lg" style="position:absolute; z-index:9; top:40%; left:500px;">
           BUY!</button></a><br>
           </from>

@@ -1,40 +1,33 @@
-
-<?php
-  session_start();
-  $rootFolder = "/csshop/";  // ระบุ path ที่วาง program เช่น / , /csshop/ , /myproject/
-
-  include('db.php');
-
-  $db = new DB();
-  
-  $categorys = $db->Query('SELECT * FROM lib_category');
-  $list = $db->Query('SELECT * FROM product');
-  $mas = $db->Query('SELECT * FROM mas');
+<?php include "connect.php";
+session_start();
+$categorys = $pdo->Query('SELECT * FROM lib_category'); 
+$rootFolder='/csshop/';
 ?>
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
- <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-	<title>CSS</title>
-	<link rel="icon" type="images/png" href="<?=$rootFolder?>images/logo-square.png">
-	<link rel="stylesheet" type="text/css" href="<?=$rootFolder?>style.css">
-  <link rel="stylesheet" type="text/css" href="<?=$rootFolder?>master/style-m.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+<title>
+    search
+</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  
+<style>
+body{
+    background-color:#252d41;
+}
+a{
+    color:white;
+    text-decoration:none;
+}
+</style>
 
-	<!--[if lt IE 9] >
-   <script scr="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-   <script scr="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> 
-  <![endif] -->
 </head>
-
-<body class="bg">
+<body>
 
 <nav class="navbar navbar-expand-lg navbar-light  fixed-top navbar-dark" style="background-color: #232323;">
 <a class="navbar-brand" href="<?=$rootFolder?>">
-    <img src="<?=$rootFolder?>/images/logo-square.png" width="50" height="50" class="d-inline-block align-top" alt="">
+    <img src="images/logo-square.png" width="50" height="50" class="d-inline-block align-top" alt="">
   </a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -68,22 +61,18 @@
       if(isset($_SESSION['name']) && $_SESSION['name']!=""){ 
         ?>
       <li class="nav-item">
-      <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "<?=$rootFolder?>cart/cart.png"  width="20" ></a>
+      <a class="nav-link" href="<?=$rootFolder?>cart/cart.php">CART <img src= "cart/cart.png"  width="20" ></a>
     </li>
       <?php } ?>
-      <li class="nav-item">
-      <a class="nav-link" href="<?=$rootFolder?>how.php">HOW TO </a>
-    </li>
       <li class="nav-item dropdown ">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         SEARCH &#x1F50D;</a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-    <form class="form-inline dropdown-item" action='<?=$rootFolder?>search.php'>
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword">
-      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    
-    </div>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+        <form class="form-inline dropdown-item" action="search.php">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword" >
+          <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        </div>
       </li>
 </ul>
 
@@ -122,7 +111,54 @@
 
   </div>
 </nav>
-<br>
-<br>
-<br>
-<!-- เชี้ยเอ้ย -->
+<br><br><br><br><br>
+
+<?php
+
+$stmt = $pdo->prepare("SELECT * FROM product WHERE pname LIKE ? ");
+
+if (!empty($_GET)) 
+$value = '%'. $_GET["keyword"] . '%'; 
+$stmt->bindParam(1, $value);
+$stmt->execute();
+?>
+<!--<div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right:5px;">
+    <form class="form-inline dropdown-item" action="search.php">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="keyword" style="width:50%"; >
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+    </form>
+    </div>-->
+
+<center style="color:gray;font-size:16pt;">
+ <b>search for " <?=$_GET['keyword']?>"</b>   
+</center>
+<br><br>
+
+<?php 
+while ($row = $stmt->fetch()) : ?>
+
+<div style="position:relative; left:3%;" >
+    <a href="game1.php?pid=<?=$row['pid']?>" >
+    <img src="images/<?=$row["pid"]?>.jpg" width="20%" >
+    &nbsp;
+    <?=$row ["pname"]?>
+    -
+    <?php if($row['pid']==2 || $row['pid']==3 || $row['pid']==17){
+			?>
+    <strike style="color:gray;"><?=$row['price'];?> </strike>&nbsp;
+			<span style="color:#a00d00;"><?=$row['price']*0.9?> บาท</span>
+		<?php } else { ?>
+		<span style="color:#a00d00;"><?=$row['price'];?> บาท</span>
+		<?php } ?>
+    <br><br><br><br>
+</div>
+<?php endwhile; ?>
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>
+<!--เชี้ยเอ้ย-->
